@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
 
         // Update the user's lastSeen timestamp in the database
         try {
-          const url = `https://lovealto.com/user/update-last-seen`;
+          const url = `https://api.lovealto.com/user/update-last-seen`;
 
           const response = await unirest("POST", url)
             .headers({
