@@ -4,7 +4,11 @@ const unirest = require("unirest");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["https://admin.writersgigshub.com", "http://localhost:5173"],
+    origin: [
+      "https://lovealto.com",
+      "https://www.lovealto.com",
+      "http://localhost:5173",
+    ],
   },
 });
 
@@ -32,14 +36,14 @@ io.on("connection", (socket) => {
 
         // Update the user's lastSeen timestamp in the database
         try {
-          const url = `http://localhost:3502/user/update-last-seen`;
+          const url = `https://lovealto.com/user/update-last-seen`;
 
-         const response = await unirest("POST", url)
+          const response = await unirest("POST", url)
             .headers({
               "Content-Type": "application/json",
             })
             .send({
-              userId
+              userId,
             });
           console.log(`User ${userId} last seen updated.`, response?.body);
         } catch (error) {
